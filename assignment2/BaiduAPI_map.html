@@ -1,0 +1,242 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>东北师大(本部)周边地图</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<style>
+	body{
+		font-family:"微软雅黑";
+		}
+    #container{
+	    float:right;
+		position: absolute;
+        margin-top:5px; 
+        width: 67%; 
+        height: 590px; 
+        border: 1px solid gray;
+        overflow:hidden;
+		left:31%;
+	}
+	#left{
+		margin:auto;
+		color:white;
+		float:left;
+		width:30%;
+		height:100%;
+	}
+	#btn{
+		display:block;
+		float:right;
+		height:60px;
+		width:50px;
+	}
+	#r-result{
+		width:100%;
+		height:30%;
+		max-height:250px;
+		overflow:auto;
+		}
+	#r-result table{width:100%;overflow:auto;}
+    </style>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=DCv3fHzdQ8hFR6Ll0ri1y15oxmF0aojq"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/library/Heatmap/2.0/src/Heatmap_min.js"></script>
+</head>
+<body style="background:#666;background-image:url(img3.jpg);background-repeat:repeat;">
+    <div id="left" >
+    <h3>精确查询经纬度</h3>   
+        <p>要查询的地址：&nbsp&nbsp&nbsp&nbsp <input id="text_" type="text" value="东北师范大学"/>&nbsp&nbsp&nbsp&nbsp <input type="button" id="btn" value="查询" onclick="searchByStationName();"/></p>
+        <p>查询结果(经纬度)：<input id="result_" type="text" /></p>
+        <h3>当前鼠标点坐标</h3>
+        <p>当前鼠标的经纬度为：<input id="result1_" type="text" /></p>
+        <h3>多关键字检索</h3>       
+        查询关键字(空格分隔)<input id="text2_" type="text" value=""/>
+        <div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
+        <input type="button" id="btn2" value="查询" onclick="selectbyword();"/>
+        <p>&nbsp&nbsp 热力图<input type="radio" name="rdo" id="chart"/>&nbsp&nbsp 气泡图<input type="radio" name="rdo" value="nochart" checked/>
+&nbsp <input type="button"  onclick="openHeatmap();" value="显示热力图"/><input type="button"  onclick="closeHeatmap();" value="关闭热力图"/></p>
+        <div id="r-result">
+        </div>
+    </div>        
+    <div id="container">
+    </div>
+
+</body>
+<script type="text/javascript">
+    var map = new BMap.Map("container");
+    map.centerAndZoom(new BMap.Point(125.338,43.867), 17);
+    map.enableScrollWheelZoom();    //启用滚轮放大缩小，默认禁用
+    map.enableContinuousZoom();    //启用地图惯性拖拽，默认禁用
+
+    map.addControl(new BMap.NavigationControl());  //添加默认缩放平移控件
+    map.addControl(new BMap.OverviewMapControl()); //添加默认缩略地图控件
+    map.addControl(new BMap.OverviewMapControl({ isOpen: true, anchor: BMAP_ANCHOR_BOTTOM_RIGHT }));   //右下角，打开
+
+    var localSearch = new BMap.LocalSearch(map);
+    localSearch.enableAutoViewport(); //允许自动调节窗体大小
+function searchByStationName() 
+{
+    map.clearOverlays();//清空原来的标注
+	add_overlay();
+    var keyword = document.getElementById("text_").value;
+    localSearch.setSearchCompleteCallback(function (searchResult) {
+        var poi = searchResult.getPoi(0);
+        document.getElementById("result_").value = poi.point.lng + "," + poi.point.lat;
+        map.centerAndZoom(poi.point, 17);
+        var marker = new BMap.Marker(new BMap.Point(poi.point.lng, poi.point.lat));  // 创建标注，为要查询的地方对应的经纬度
+        map.addOverlay(marker);
+        var content = document.getElementById("text_").value + "<br/><br/>经度：" 
+		+ poi.point.lng + "<br/>纬度：" + poi.point.lat;
+        var infoWindow = new BMap.InfoWindow("<p style='font-size:14px;'>" + content + "</p>");
+        marker.addEventListener("click", function () { this.openInfoWindow(infoWindow); });
+        marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
+    });
+    localSearch.search(keyword);    
+}	
+var x=Array();
+var y=Array();
+var z=Array();
+var points = Array();
+function selectbyword() 
+{
+    map.clearOverlays();//清空原来的标注
+	add_overlay();
+	var mPoint = new BMap.Point(125.338,43.867);
+	var marker = new BMap.Marker(mPoint);
+	var circle = new BMap.Circle(mPoint,1000,{fillColor:"blue", strokeWeight: 1 ,fillOpacity: 0.3, strokeOpacity: 0.3});// 设置覆盖物的参数，中心坐标，半径，颜色
+	map.addOverlay(circle);
+	circle.hide();
+    var myKeys = document.getElementById("text2_").value.split(" ");
+	var local = new BMap.LocalSearch(map, {
+	renderOptions:{map: map,selectFirstResult:false,
+autoViewport:true, panel:"r-result"},
+pageCapacity:99
+	});
+	if(document.getElementById("chart").checked)
+	{
+	local.searchNearby(myKeys[0], circle.getCenter(), circle.getRadius());
+	local.setPageCapacity(99);
+local.setSearchCompleteCallback(function(e){
+    for(var i=0; i<local.getResults().getCurrentNumPois(); i++){
+
+	x[i]= local.getResults().getPoi(i).point.lng;
+	y[i]= local.getResults().getPoi(i).point.lat;
+	z[i] =1/map.getDistance(mPoint, local.getResults().getPoi(i).point)*500000;
+	local.getResults().getPoi(i).address+="   距离东北师范大学地理科学学院"+map.getDistance(mPoint, local.getResults().getPoi(i).point)+"米";
+	if(map.getDistance(mPoint, local.getResults().getPoi(i).point) > circle.getRadius()){
+	local.getResults().getPoi(i).title = null;
+	local.getResults().getPoi(i).address = null;
+	local.getResults().getPoi(i).phoneNumber=null;
+	}
+    }
+for(var i=0;i<x.length;i++){
+points[i]={"lng":x[i],"lat":y[i],"count":z[i]};
+}
+draw();
+})
+
+}
+else{local.searchInBounds(myKeys, map.getBounds());} 
+}
+function draw(){   
+    if(!isSupportCanvas()){
+    	alert('热力图目前只支持有canvas支持的浏览器,您所使用的浏览器不能使用热力图功能~')
+    }
+	heatmapOverlay = new BMapLib.HeatmapOverlay({"radius":100});
+	map.addOverlay(heatmapOverlay);
+	heatmapOverlay.setDataSet({data:points,max:3000});
+	openHeatmap();
+}
+	//是否显示热力图
+    function openHeatmap(){
+        heatmapOverlay.show();
+    }
+	function closeHeatmap(){
+        heatmapOverlay.hide();
+    }
+	
+    function setGradient(){
+     	var gradient = {};
+     	var colors = document.querySelectorAll("input[type='color']");
+     	colors = [].slice.call(colors,0);
+     	colors.forEach(function(ele){
+			gradient[ele.getAttribute("data-key")] = ele.value; 
+     	});
+        heatmapOverlay.setOptions({"gradient":gradient});
+    }
+	//判断浏览区是否支持canvas
+    function isSupportCanvas(){
+        var elem = document.createElement('canvas');
+        return !!(elem.getContext && elem.getContext('2d'));
+    }
+
+	
+
+function G(id) {
+		return document.getElementById(id);
+	}
+    var ac = new BMap.Autocomplete(    //建立一个自动完成的对象
+		{"input" : "text2_"
+		,"location" : map
+	});
+
+	ac.addEventListener("onhighlight", function(e) {  //鼠标放在下拉列表上的事件
+	var str = "";
+		var _value = e.fromitem.value;
+		var value = "";
+		if (e.fromitem.index > -1) {
+			value = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+		}    
+		str = "FromItem<br />index = " + e.fromitem.index + "<br />value = " + value;
+		
+		value = "";
+		if (e.toitem.index > -1) {
+			_value = e.toitem.value;
+			value = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+		}    
+		str += "<br />ToItem<br />index = " + e.toitem.index + "<br />value = " + value;
+		G("searchResultPanel").innerHTML = str;
+	});
+
+	var myValue;
+	ac.addEventListener("onconfirm", function(e) {    //鼠标点击下拉列表后的事件
+	var _value = e.item.value;
+		myValue = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+		G("searchResultPanel").innerHTML ="onconfirm<br />index = " + e.item.index + "<br />myValue = " + myValue;
+		
+		setPlace();
+	});
+
+	function setPlace(){
+		map.clearOverlays();    //清除地图上所有覆盖物
+		add_overlay();
+		function myFun(){
+			var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果
+			map.addOverlay(new BMap.Marker(pp));    //添加标注
+		}
+		var local = new BMap.LocalSearch(map, { //智能搜索
+		  onSearchComplete: myFun
+		});
+		local.search(myValue);
+	}
+		var polyline = new BMap.Polyline([
+		new BMap.Point(125.331892,43.8697),
+		new BMap.Point(125.345772,43.869795),
+		new BMap.Point(125.345725,43.868911),
+		new BMap.Point(125.344144,43.868872),
+		new BMap.Point(125.343965, 43.865349),
+		new BMap.Point(125.336832, 43.865349),
+		new BMap.Point(125.336958, 43.86323),
+		new BMap.Point(125.332017,43.863243),
+		new BMap.Point(125.331892,43.8697)
+	], {strokeColor:"blue", strokeWeight:2, strokeOpacity:0.5});
+		map.addOverlay(polyline); 
+    function add_overlay(){
+		map.addOverlay(polyline);  
+	}//增加矩形
+		map.addEventListener("mousemove",function(e){
+		document.getElementById("result1_").value = e.point.lng + "," + e.point.lat;
+	});
+/*	var walking = new BMap.WalkingRoute(map, {renderOptions: {map: map, panel: "r-result", autoViewport: true}});
+	walking.search("长春市南关区东北师范大学", "麦当劳");*/
+</script>
+</html>

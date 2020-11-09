@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>2016 Review | Rice estimation</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="imagetoolbar" content="no" />
+<link rel="stylesheet" href="styles/layout.css" type="text/css" />
+</head>
+<body id="top" style="background-image:url(images/nightlight.png);background-repeat:no-repeat;background-attachment:fixed">
+<!-- ####################################################################################################### -->
+<div class="wrapper col1">
+  <div id="header">
+    <div id="topnav">
+      <ul>
+        <li class="active"><a href="#">夜光遥感</a>
+          <ul>
+            <li><a href="nightlightBegan.html">夜光遥感起源与应用</a></li>
+            <li><a href="nightlightresearch.html">1995-2013年辽中南城市群城市化进程研究</a></li>
+          </ul>
+        </li>
+        <li><a href="habitability.html">长春宜居性</a></li>
+        <li><a href="DEM.html">月球DEM应用</a></li>
+        <li><a href="rice.html">水稻面积估算</a></li>
+        <li><a href="index.html">主页</a></li>
+      </ul>
+    </div>
+    <div id="logo" style="font-family:微软雅黑">
+      <h1><a href="#"><strong>我</strong><span style="font-size:30px">的&nbsp </span><span style="font-size:35px">20</span><span style="font-size:50px"><strong>16</strong></a></h1>
+    </div>
+    <br class="clear" />
+  </div>
+</div>
+<!-- ####################################################################################################### -->
+<div class="wrapper col3"  >
+  <div class="container" >
+    <div class="content" style="font-size:15px;border:#333 solid;padding:30px;background:#FFF" >
+      <h1 style="font-size:30px">基于夜光遥感数据的1995-2013年辽中南城市群城市化进程研究
+</h1>
+      <h3><a name="a1">1 引言</a></h3>
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp辽中南区域是东北人口稠密、经济发达、人民生活最富裕的经济区域，也是城市化水平相对较高的城市群地区，是东北区经济发展的龙头[1-2]。因此，辽中南城市群的发展在东北老工业基地振兴中发挥着重要作用，其作为整个东北地区经济增长极所具有的辐射力和带动力更是备受关注[3]。监控和理解辽中南城市空间特征及其变化过程，调整此过程中的土地利用格局，有利于降低城市化过程中风险水平 [4-6]；同时，研究辽中南城市群的人口分布特征及时空演变规律，能够为制定科学的人口发展政策，促进区域可持续发展提供参考[7]。</p> 
+<p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp始于20世纪70年代的美国国防气象卫星计划(Defense Meteorological Satellite Program, DMSP)搭载的线扫描系统(Operational Linescan System, OLS)传感器由于它强大的光电放大特性。被发现可以捕捉到夜间城镇发出的微弱的光，并使之明显区别于黑暗的乡村背景[8]，且DMSP/OLS数据与AVHRR具有相同空间分辨率，为大尺度的城市与人口研究提供一种独特数据获取手段[9]。因此DMSP-OLS数据被大量用于城市发展评估与人口估算[10-12]。</p>
+<p> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp建成区范围是城市化的重要参量，研究表明夜光影像能够有效地提取建成区范围及变化,国内外已有多名学者完成了对城市建成区的提取[13-16]。Sutton等[13]在对DMSP/OLS夜间灯光数据和人口分布数据对比分析后，提出别提取低收入地区、高收入地区和一些特殊地区(如埃及尼罗河地区)的城市建成区； Imhoff[14]研究了夜间灯光数据中城市建成区光斑的空间形态特性,提出在逐渐增加分割阈值的过程中,以城市斑块周长大幅度变化的临界点进行城市区域的提取；Henderson[15]则从更高精度的TM影像中提取城市区域作为辅助数据，与DMSP/OLS数据进行比较分析，获取适用于从夜间灯光数据中进行城市建成区提取的分割阈值；何春阳、史培军等[16]以中国城市建设用地的统计数据作为参考依据,根据夜间灯光数据的自身特点,计算出适宜的阈值用于建成区域的提取。</p>
+<p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp在使用夜光遥感估算人口方面，Sutton等[17]研究发现美国陆地的夜光亮度和人口密度分布图的具有较好的相关性，线性回归的决定系数达到0.63，这为利用夜光影像研究人口密度提供了经验基础；LO等[18]利用中国1997年的DMSP/OLS夜光影像的点亮面积、夜光总量、平均发光强度、夜光比例等多个指标与人口、非农业人口在县级和城市单元上进行回归分析，发现夜光数据能够较好地在县级尺度上模拟非农业人口，证明了夜光影像对于人口建模具有很好的潜力。</p>
+<p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp因此，本研究利用DMSP/OLS夜光遥感数据对辽中南地区城市群1995-2013年进行建成区信息提取以及人口估算，从而对城市化空间过程以及人口空间分布变化过程进行重建，目的是为辽中南地区的城市化过程以及人口的空间变化提供更定量化评价，对东北的振兴具有一定的指导意义。
+</p>
+<img src="images/nightlight1.png" alt="" style="margin:0 auto" width="600" height="350"/>
+
+      <h3><a name="a2">2 研究区和数据来源</a></h3>
+      <h4><a name="a3">2.1 研究区介绍</a></h4>
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp目前对于辽中南城市群的研究中，对城市群所涵盖的空间有较大分歧，主要在于所包含的城市数目上，有的认为辽中南城市群由沈阳、大连、鞍山、抚顺、本溪、丹东、营口、辽阳、盘锦、铁岭10个城市组成[19],也有的认为辽中南城市群由沈阳、鞍山、抚顺、本溪、丹东、营口、辽阳、铁岭8个城市组成[20]。而根据2016年我国规划的20个城市群中，沈阳、大连、鞍山、抚顺、本溪、丹东、营口、辽阳、盘锦共9个城市被划入辽中南城市群，为9大区域性城市群（国家二级城市群）之一，本研究也将该区域作为辽中南城市群的空间范围(下图)。</p>
+      <img src="images/nightlight3.jpg" alt="" width="300" style="margin:0 auto"/>  
+      <h4><a name="a4">2.2 数据来源</a></h4>
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp本研究利用1995-2013年间共19年的DMSP-OLS的夜间稳定灯光影像数据，其下载自美国国家海洋和大气管理局下属的国家地理数据中心网站( <a href="http://ngdc.noaa.gov/eog/dmsp/downloadV4composite.html">http://ngdc.noaa.gov/eog/dmsp/downloadV4composite.html </a>)。DMSP-OLS夜间稳定灯光影像数据的空间分辨率为30"(弧秒，在赤道附近约为1km，40°N处约为0.8 km)，每一幅影像数据记录了一段时间内(通常为1年)在无云条件下灯光被连续探测到的频率[8]。</p>
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp本研究所使用的Landsat TM/ETM+影像，空间分辨率30m，作为辅助数据来提取建成区，数据来自美国地质调查局地球资源观测与科学中心( <a href="http://glovis.usgs.gov/index.shtml">http://glovis.usgs.gov/index.shtml</a>),为Level 1标准地形校正产品，已进行过系统辐射校正、地面控制点几何校正且通过DEM做过了地形校正。
+本研究用于精度验证的建成区面积统计数据来源于中国统计年鉴[21]。人口统计数据来源于中国分市县人口调查数据。
+</p>   
+      <h3><a name="a5">3 研究方法</a></h3>
+      <h4><a name="a6">3.1 建成区信息提取方法</a></h4>
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp应用DMSP-OLS稳定灯光影像数据提取城市建成区的关键步骤就是确定用于区分建成区像元和非建成区像元的阈值。当前提取阈值的方法主要有经验阈值法[22]、突变检测法[23]和基于辅助数据的比较法[24-25]。其中经验阈值法过于主观[26],而在实践中，我们发现突变检测法适用于上海、北京等大城市，而不适用于辽中南城市群中尚不发达的小城市，这主要是因为在阈值提高的过程中，小城市并不会产生内部破碎，因此无法得到阈值。综上所述，本研究采用了基于Landsat TM/ETM+数据的比较法来确定提取建成区的最佳阈值。而由于在大尺度研究中不能使用单一的阈值提取城镇信息[27],因此，本研究将辽中南区域按照地级市行政边界划分为9个区域分别提取阈值，并根据1995-2013年中各年辽中南区域的Landsat TM/ETM+数据的质量，选择出1995, 1997, 2000, 2004, 2007, 2010, 2013年7年来进行研究。</p>
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp为方便计算，所用数据都统一采用兰伯特等积方位投影(Lambert Azimuthal Equal Area Projection)。对每年的Landsat TM/ETM+数据进行拼接，并对使用的DMSP-OLS数据与拼接后的Landsat TM/ETM+数据按照辽中南各地级市的掩模进行裁剪。</p>
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp分别对这些区域1995-2013年的Landsat TM/ETM+遥感影像进行最大似然分类(下图)，提取出建成区区域。并在每一年分类后的影像上随机取100个点，在谷歌地球上对其分类的土地利用类型进行比对，得到历年的平均正确率达到了94.57%。</p>
+      <img src="images/nightlight8.png" alt="" style="margin:0 auto" width="600"/>
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp编写python程序，从0开始不断增大分割阈值对夜光遥感影像进行二值化，直到阈值达到某一个点时，其与Landsat-TM/ETM+提取的建成区区域的Kappa系数大于根据前一个阈值计算的Kappa系数以及后一个阈值计算的Kappa系数，该阈值即为该年该地级市的建成区提取最佳阈值。使用上述方法对1995, 1997, 2000, 2004, 2007, 2010, 2013年辽中南城市群各地级市分别提取最佳阈值，并使用这些阈值提取辽中南建成区域。</p>
+      <h4><a name="a7">3.2 城市扩张类型判别分析方法</a></h4>
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp结合刘纪远等提出的利用凸壳理论[26]来识别城市扩张类型的方法，将城市空间扩张类型主要分为两个部分: 首先是构建包含城市群内所有城市用地的凸壳即包含城市内所有城市用地的最小凸多边; 然后判断城市扩张部分是否落在凸壳内，若城市用地扩张部分落在凸壳外的像元数大于落在壳内的像元数，则确定该城市的城市用地扩张类型为外延型，否则确定为填充型(下图)。前者一般被认为是“摊大饼”式的粗放蔓延，而后者则使城市更加紧凑，紧凑城市是一种尽可能充分利用已经存在的城市空间的结果[27]，被认为是一种能源消耗最小的城市用地扩展方式[28]。</p>
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp本研究构建了辽中南1995,1997,2000,2004,2007,2010,2013年辽中南9个城市的凸壳，然后分别计算1995-1997年,1997-2000年,2000-2004年,2004-2007年,2007-2010年，2010-2013年6个时期增加的城市像元落在凸壳内部和外部的数目及比例。</p>
+      <img src="images/nightlight4.jpg" alt="" style="margin:0 auto" width="600"/>
+     <h4><a name="a8">3.3 城市空间格局变化分析方法</a></h4>
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp景观格局指标反映了大小和形状不一的景观斑块在空间上的排列特征[29].本项目选取了斑块数量(Number of  Patches, NP)、景观总面积(Total Area, TA)、平均斑块大小(Mean Patch Size,  MPS)、最大斑块面积比(Largest Patch Size, MPS)、斑块密度(Largest Patch Size, MPS)、景观形状指数(Landscape Shape Index, LSI)等6个典型景观格局指标，计算了辽中南城市群的1995-2013年城市发展空间格局变化特征。</p>
+      <h4><a name="a9">3.4 人口数据模拟方法</a></h4>
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp卓莉等[16]指出不同规模层级的城市灯光指数与人口的关系大不相同，基于灯光强度与人口的显著相关关系，本研究将研究区域划分为市、县两个层级，对不同层级的人口数据与灯光数据分别做回归分析，探讨常住人口总量和灯光总量之间的关联关系。因变量ｙ为辽中南城市群10个地级市或73县级行政区的常住人口数TPP， 自变量ｘ为10个地级市或73个县级行政区内所有栅格的灰度值之和，即每个行政区的灯光值总数。地级市和县级市基于灯光强度的拟合图和对应的回归方程，相关系数为均较好，拟合效果较好。分别利用这些拟合多项式利用可分别求得各行政区内基于灯光像元的预测初始人口数FIF1、FIF2。在初始预测结果基础上运用人口校准参数Kn校正像元人口数，人口校准参数Kn可对行政单元上模拟的总人口进行修正，得到最终的栅格单元人口数 POPi（如下图）：</p>
+      <p align="center">FIP1 = a1 × TDN3 + a2 × TDN2 + a3 × TDN </p>
+      <p align="center">FIP2 = b1 × TDN3 + b2 × TDN2 + b3 × TDN</p>
+      <p align="center">POPi = FIP × Kn = FIP × TPPn /TMPn</p>
+      <p>式中:POPi为最终确定的像元上的人口数；TDN为区域像元总灰度值; Kn为校正比例参数，是该类型第n行政单元上的统计常住人口总数TPPn与模拟的初始人口总数TMPn之比。a1、a2 、a3、b1、b2、b3均为拟合系数。</p>
+      <img src="images/nightlight9.png" alt="" style="margin:0 auto" width="600"/>
+      <h4><a name="a10">3.5 人口聚集指数计算方法</a></h4>
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp人口集中指数是根据人口和土地面积的关系来分析人口区域分布的特点，反映人口分布相对于土地面积的集中或分散情况，从总体上揭示人口空间分布集中或分散的程度及其变动趋势。人口集中指数评价指标计算公式如下：</p>
+      <img src="images/equation6.png" alt="" style="margin:0 auto" width="200"/>
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp式中：Pi、Si分别为i像元的人口数量和面积；P、S分别为各行政区总人口数量和总面积；为行政区内像元个数；人口集中指数Ci的数值在[0，1]之间，Ci越大，说明人口的区域分布越集中；趋于1时，说明人口分布几乎集中分布于某一“点”；反之Ci越小，说明人口的区域分布越分散；趋于0时，说明人口几乎均匀分布于各地区。</p>
+      <h3><a name="a11">4 结果分析</a></h3>
+      <h4><a name="a12">4.1 建成区信息提取精度验证</a></h4>
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp将DMSP-OLS夜光遥感数据按照最佳阈值提取的建成区区域与Landsat最大似然分类得到的建成区区域进行比较以进行精度评价，计算得各年各地级市的总体精度与Kappa系数平均值分别为95.41%与0.59，并将DMSP-OLS夜光遥感数据提取的面积与政府发布的城市建成区面积统计数据进行比较，得到提取的历年城市建成区区域的平均相对误差为0.139，可见本项目利用DMSP-OLS数据提取的1995-2013年城镇用地时空信息基本能够反映辽中南区域城镇发展的实际情况。将DMSP-OLS提取的城市建成区域与Landsat TM/ETM+最大似然分类提取的城市建成区域进行对比验证(如图4所示)，发现DMSP-OLS数据提取结果与Landsat TM/ETM+数据提取结果在空间上吻合良好，且DMSP-OLS数据提取结果的噪声水平更低，直观地反映地表人类活动密集的空间范围，但因其分辨率较低和灯光扩散效应的影响，其在精细程度上不及后者。这也证明了在大中时空尺度下城市区域范围的提取时，DMSP-OLS数据提取照亮区域来估算研究区域城市建成区面积仍是一种简便、可行的方法。</p>
+      <img src="images/nightlight5.jpg" alt="" style="margin:0 auto" width="600"/>
+      <h4><a name="a13">4.2 建成区信息提取结果分析</a></h4>
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp根据各年各地级市的最佳阈值提取建成区域，制作出的辽中南城市群历年建成区域图(如下图)</p>
+      <img src="images/show.gif" alt="" style="margin:0 auto" width="300"/>
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp1995-2013年辽中南城市群总建成区面积随时间变化如下图，可以看出辽中南区域的建成区面积在这段时间内增加了1.12倍，在1995-2004年间加速增长，而在2004-2010年左右增速稳定在5%以上，达到峰值，而在2010-2013年增速开始有所回落，一定程度上预示辽中南区域在近几年的衰落。</p>
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp1995-2013年辽中南城市群各地级市建成区面积随时间变化如图8，可以看出辽中南城市群中，发展最活跃的为沈阳和大连，在1995-2013年中面积分别增加了1.78倍与1.08倍，而其他地级市的发展则较为缓慢，增幅最小的是盘锦与丹东，分别只增加了0.28倍与0.30倍。说明在辽中南城市群中的城市化主要以大城市为主导，而其他中、小城市则发育不足，大型城市与中、小城市的城市化进程存在非常大的差距。</p>
+      <img src="images/nightlight10.png" alt="" style="margin:0 auto" width="600"/>
+      <img src="images/nightlight11.png" alt="" style="margin:0 auto" width="600"/>
+      <h4><a name="a14">4.3 城市扩张类型分析</a></h4>
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp研究得到的辽中南9大城市1995-2013年城市扩张类型结果如表1,可以看出在1995-2013年间，大部分城市以外延扩张为主，而在2000-2013年间，鞍山、抚顺、盘锦均出现了填充扩张的现象(鞍山2000-2007、抚顺2000-2013、盘锦2004-2007和2010-2013)。抚顺和鞍山由于其周边山地或者丘陵的影响，随着时间的变化，城市的扩张受到的地形阻力越来越大(下图)，因此不可能像平原地区城市一样外延扩张，而出现了填充的扩张方式。不同于抚顺和鞍山，盘锦位于平原，地势低洼平坦，它出现填充扩张的原因是其建成区域扩张缓慢而造成的。此外，值得一提的是沈阳在2010-2013年也出现了填充扩张的现象，城市的紧密程度有所提高。</p>
+      <img src="images/nightlight12.png" alt="" style="margin:0 auto" width="500"/>
+      <img src="images/nightlight6.jpg" alt="" style="margin:0 auto" width="600"/>
+      <img src="images/nightlight7.jpg" alt="" style="margin:0 auto" width="600"/>
+      <h4><a name="a15">4.4 城市空间格局变化分析</a></h4>     
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp研究得到的辽中南城市群1995-2013年各景观指标如表2，并根据表2制作出如下图所示的各项指标在1995-2013年间的变化趋势图。</p>
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp从斑块数的变化情况来看，在1995-2000年与2007-2013年间斑块数快速上升，说明在这段时间里辽中南区域内有很多小城镇发展为新城市；而在2000-2007年间斑块数变化不大，而景观总面积任然稳步上升，说明这段时间里仅为原有的城市群在扩张，而小城镇发展缓慢。</p>
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp在辽中南区域内，最大斑块为沈阳市，从最大斑块面积比的变化情况来看，沈阳在2000-2007年间迅速扩张，速度远大于其他地区；而在2007-2013年开始，由于受城市土地资源有限的客观条件制约以及其他城市的快速发展，沈阳扩张速度相对减缓，首位度开始下降。</p>
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp景观形状指数是通过计算某一景观类型的斑块周长与同面积圆形的周长之比，来测定该景观类型的复杂程度。景观形状指数越高，说明城市形状变得复杂多样，与面积类似、形状不规则的城市相比，饼状城市与外界环境交界面更小，与外界物质、能量交换不畅，带来交通拥堵、污染物排放增加、大气污染、热岛效应、开放空间减少等问题[30-31]。在1995-2013年间辽中南区域内的城市景观形状指数呈现加速上升的态势，说明辽中南城市群的形状趋于复杂和不规则，与外界接触的总边界长度与边界密度提高，区域的景观生态过程活跃。</p>
+      <img src="images/nightlight13.png" alt="" style="margin:0 auto" width="600"/>
+      <h4><a name="a16">4.5 人口数据模拟结果分析</a></h4>
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp根据1995年、1997年、2000年、2004年、2007年、2010年、2013年7年辽中南地区各地级行政区人口估算数、非农业人口估算数（如下图），分析随着时间变化各地级行政区城乡人口比的关系。结果表明，该地区总体的人口城镇化的趋势为1995—2000年平稳发展，2000到2010年快速发展，到了2000—2013年，该地区城镇化进程减缓乃至部分地区停滞。主要原因是该地区人口自然增长慢、人口大量的外迁和该区域城市间的相互迁移导致的。总体看来，沈阳、大连仍然是本地区城镇化水平最高的，而辽阳、锦州、丹东城镇化水平相对较低。</p>
+      <img src="images/nightlight14.png" alt="" style="margin:0 auto" width="600"/>   
+      <img src="images/nightlight15.png" alt="" style="margin:0 auto" width="600"/>   
+      <h4><a name="a17">4.6 人口聚集指数计算结果分析</a></h4>      
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp人口聚集指数计算结果分析结果表明，人口聚集指数在空间上与夜光遥感的灰度值具有高度的拟合性，进一步说明夜光遥感能够很好地反映人类活动。图13可以看出，从1995—2013年，沈阳市一直表现出高聚集的状态，且这种趋势正在增加，表现了沈阳市强大的城市吸引力；大连市后来居上，从21世纪开始，表现出逐步增长地人口集聚现象。其他城市，如抚顺、营口则出现人口聚集指数减小的趋势。</p>
+ <img src="images/show_renkou.gif" alt="" style="margin:0 auto" width="300"/>  
+      <h3><a name="a18">5 结论</a></h3>    
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp辽中南城市群由于其独特的区位优势在东北老工业基地振兴中发挥着重要的作用，该地区建成区在1995-2013年期间快速扩张，根据本研究大致可分为3个阶段：1995-2000年城市群初始发育阶段、2000-2007年大城市快速扩张阶段、2007-2013年大城市稳定发展阶段。</p>
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp在1995-2000年城市群初始发育阶段，辽中南区域很多小城镇发展为新城市，城市扩张类型均为外延扩张，建成区面积加速上升，大、中、小城市同步发展。各城市人口数量稳步增长。</p>
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp在2000-2007年大城市快速扩张阶段，辽中南区域中小城市发展严重滞后，没有新城市的诞生，而沈阳和大连两个大城市快速扩张，与中小城市形成了巨大的差距。同时，城市的扩张类型仍然以外延扩张为主导，而在一些周边存在山地或丘陵的地区，城市由于地形原因开始出现了填充扩张的现象。沈阳、大连表现出极强的人口集聚性，其他城市不同程度地受到影响。</p>
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp在2007-2014年大城市稳定发展阶段，沈阳的发展由于受城市土地资源有限的客观条件制约，其发展速率开始下降，城市扩展模式转变为填充型。而中小城市快速发展，涌现出很多新城市，大型城市与中小城市差距开始缩小。然而人口自然增长缓慢已经成为制约该地区城市化的因素之一。</p>
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp根据辽中南区域1995-2013年的发展情况，本研究小组认为辽中南城市群在未来需要将发展重点转向中小城市，缩小大型城市与中小城市的差距，最终实现城市群内各类城市的协调发展。</p>
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp李熙和李德仁使用K-means聚类将叙利亚及其周边地区按灯光随时间的变化划分为二类（稳定地区和下降地区）与三类（稳定，中度下降与急剧下降），发现叙利亚与其周边国家存在明显差别，说明国际边界会造成社会经济的不连续。
+</p>
+      <h3><a name="a19">6 参考文献</a></h3>
+      [1] 姜博,修春亮,陈才．辽中南城市群城市流分析与模型阐释[J]．经济地理,2008（9）：853-856.</br>
+[2] 王静.辽宁中部城市群的发展概况及对策[J].城市管理与科技,2006(2):63-65.</br>
+[3] 赵映慧,修春亮,姜博,程林.1990年以来东北地区三大城市群的极化发展[J].经济地理,2010(5):738 – 743</br>
+[4] 闫小培,林彰平. 20世纪90年代中国城市发展空间差异变动分析[J]．地理学报, 2004,59(3) : 437- 445．</br>
+[5] 刘晓丽,方创琳.城市群资源环境承载力研究进展及展望[J]．地理科学进展，2008，27(5) 　　: 35- 42．</br>
+[6] 姚世谋,朱英明,陈振光.中国城市群[M].合肥：中国科学技术大学出版社，2001.</br>
+[7] 张岸,齐清文．基于GIS的城市内部人口空间结构研究． 地理科学进展，2007，26(1)：95-105．</br>
+[8] Croft T A. Nocturnal Images of the Earth from Space(Publication No.PB-273 661,Prepared for the Topographic Division of the U.S. Geological Survey,1977),Stanford Research Institute,Stanford,California,113.</br>
+[9] 陈晋,卓莉,史培军,等.基于DMSP/ OLS数据的中国城市化过程研究——反映区域城市化水平的灯光指数的构建[J] .遥感学报, 2003,7(3):168-175.</br>
+[10] Elvidge C D, Ziskin D, Baugh K E, et al. A fifteen year record of global natural gas flaring derived from satellite data[J]. Energies, 2009,2(3):595-622.</br>
+[11] Elvidge C D, Baugh K E, Kihn E A, Kroehl H W, Davis E R, Davis C W. Relation between satellite observed visible-near infrared emissions, population, economic activity and electric power consumption[J]. International Journal of Remote Sensing,1997,18( 6) : 1373- 1379．</br>
+[12] Ma T, Zhou C, Pei T, et al. Quantitative estimation of urbanization dynamics using time series of DMSP/OLS nighttime light data: A comparative case study from China'scities[J]. Remote Sensing of Environment, 2012(124):99-107.</br>
+[13] Sutton P, Roberts D, Elvidge C, et al. A Comparison of Nighttime Satellite Imagery and Population Density for the Continental United States[J]. Photogrammetric Engineering and Remote Sensing,2001,67(9):1037-1047.</br>
+[14] Imhoff M L, Lawrence WT, Stutzer D C, et al. A technique for using composite DMSP/OLS “city lights” satellite data to accurately map urban areas[J]. Remote Sensing of Environment,1997,61(3):361-370.</br>
+[15] Henderson M, Yeh E T, Gong P, et al. Validation of urban boundaries derived from global night-time satellite imagery[J].International Journal of Remote Sensing,2003, 24(3):595 - 609.</br>
+[16] 卓莉,陈晋,史培军,等．基于夜间灯光数据的中国人口密度模拟[J]．地理学报，2005,60(2):266-276.
+[17] Sutton P. Modeling population density with nighttime satellite imagery and GIS. Computers, Environment and Urban Systems,1997,21(3-4):227-244.</br>
+[18] Lo C P. Chinese urban population estimates. Annals of the Association of American Geographers,1977,67:246-253.</br>
+[19] 赵永革,周一星.辽宁都市区和都市连绵区的现状与发展研究[J].地理学与国土研究,1997,2: 36-43.</br>
+[20] 薛东前,王传胜.城市群演化的空间过程及土地利用优化配置[J].地理科学进展,2002,21(2):95-102.</br>
+[21] 中华人民共和国国家统计局.中国统计年鉴[M].北京:中国统计出版社,1993-2011.</br>
+[22] Milesi C, Elvidge C D, Nemani R R, et al. Assessing the Impact of Urban Land Development on Net Primary Productivity in the Southeastern United States[J].Remote Sensing of Environment, 2003, 86(3):401-410.</br>
+[23] 杨洋,何春阳,赵媛媛,等. 利用DMSP/OLS稳定夜间灯光数据提取城镇用地信息的分层阈值法研究[J].中国图象图形学报,2011,16(4):666 - 673.</br>
+[24] 何春阳,史培军,李景刚,等.基于DMSP/OLS夜间灯光数据和统计数据的中国大陆20世纪90年代城市化空间过程重建研究[J].科学通报, 2006, 51(7):856-861.</br>
+[25] 阴英超.基于DMSP-OLS灯光数据的新疆天山北坡经济带城市化研究[D].乌鲁木齐: 新疆大学, 2010．</br>
+[26] 刘纪远,王新生,庄大方,张稳,胡文岩.凸壳原理用于城市用地空间扩展类型识别[J].地理学报,2003,58(6) : 885- 892．</br>
+[27] Roberto C, Maria C G, Paolo R, Urban Mobility and Urban Form: the Social and Environmental costs of Different Patterns of Urban Expansion[J]. Ecological Economics, 40(3): 199-216.</br>
+[28] Leorey O M , Nariida C S. A Framework for Linking Urban Form and Air Quality[J]. Environmental Modelling & Software,1999, 14: 541-548. 
+[29] 李秀珍,布仁仓,常禹,等.景观格局指标对不同景观格局的反应[J].生态学报,2004,24(1):123-134.</br>
+[30] 陆大道, 姚士谋, 刘慧, 等. 2006 年中国区域发展报告: 城镇化进程及空间扩张[J]. 北京: 商务印书馆,  2007.</br>
+[31] Chen H Y, Jia B S, Lau S S Y. Sustainable Urban Form for Chinese Compact Cities[J], Challenges of a Rapid Urbanized Economy. Habitat International, 2008, 32: 28-40.</br>
+[32] 高义,王辉,王培涛,等．基于人口普查与多源夜间灯光数据的海岸带人口空间化分析[J]．资源科学，2013，35(12):2517-2523.</br>
+ 
+    </div>
+    <div class="column" style="background:#FFF">
+      <div class="subnav">
+        <h2>目录</h2>
+        <ul>
+          <li><a href="#a1">1 引言</a></li>
+          <li><a href="#a2">2 研究区和数据来源</a></li>
+          <li><a href="#a5">3 研究方法</a></li>
+          <li><a href="#a11">4 结果分析</a></li>
+          <li><a href="#a18">5 结论</a></li>
+          <li><a href="#a19">6 参考文献</a></li>
+        </ul>
+      </div>
+      
+  </div>
+</div>
+</body>
+</html>

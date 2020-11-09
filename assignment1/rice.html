@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>2016 Review | Rice estimation</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="imagetoolbar" content="no" />
+<link rel="stylesheet" href="styles/layout.css" type="text/css" />
+</head>
+<body id="top" style="background-image:url(images/bg1.jpg)">
+<!-- ####################################################################################################### -->
+<div class="wrapper col1">
+  <div id="header">
+    <div id="topnav">
+      <ul>
+        <li><a href="#">夜光遥感</a>
+          <ul>
+            <li><a href="nightlightBegan.html">夜光遥感起源与应用</a></li>
+            <li><a href="nightlightresearch.html">1995-2013年辽中南城市群城市化进程研究</a></li>
+          </ul>
+        </li>
+        <li><a href="habitability.html">长春宜居性</a></li>
+        <li><a href="DEM.html">月球DEM应用</a></li>
+        <li class="active"><a href="rice.html">水稻面积估算</a></li>
+        <li><a href="index.html">主页</a></li>
+      </ul>
+    </div>
+    <div id="logo" style="font-family:微软雅黑">
+      <h1><a href="#"><strong>我</strong><span style="font-size:30px">的&nbsp </span><span style="font-size:35px">20</span><span style="font-size:50px"><strong>16</strong></a></h1>
+    </div>
+    <br class="clear" />
+  </div>
+</div>
+<!-- ####################################################################################################### -->
+<div class="wrapper col3"  >
+  <div class="container" >
+    <div class="content" style="font-size:15px;border:#333 solid;padding:30px;background:#FFF" >
+      <h1 style="font-size:30px">东北地区水稻种植面积提取</h1>
+      <h3><a name="a1">1.研究目的</a></h3>
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp建立基于野外观测和遥感数据的水稻大面积发育期识别模型。</p>
+      <h3><a name="a2">2.研究思路</a></h3>
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp利用水稻在不同生长发育阶段特殊的生理特性在MODIS时间序列数据中所表现出的光谱特征，比较其光谱特征与其他地物类型之间的差异，构建物候参数与农作物种植面积之间的定量函数关系，优化提取模型，获取农作物提取最佳参数，进行大尺度农作物空间信息提取和制图。根据函数完成对水稻的识别，从而实现对水稻种植面积和空间分布范围的提取。</p>
+      <img class="imgl" src="images/pre_Modis.png" alt="" width="300" height="300" />
+      <h3><a name="a3">3.研究方法与结果</a></h3>
+      <h5 style="font-size:14px"><a name="a4">3.1数据预处理</a></h5>
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp首先将下载经过辐射值校正的500m分辨率的MYD09A1 16天合成产品。由于MODIS数据为HDF格式，投影方式为sin投影，为后期应用必须进行数据的投影变化、格式转换、裁剪和镶嵌等预处理。数据处理时，使用MRT批处理进行镶嵌，同时将数据格式转为tiff格式，投影方式转为UTM_Zone_51N投影。(左图)</p>
+      <h5 style="font-size:14px"><a name="a5">3.2指数选取与计算</a></h5>
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp通过阅读大量文献，并反复实践后，本项目主要选取了归一化植被指数(NDVI)、增强型植被指数(EVI)、陆表水分指数(LSWI)三种植被指数。并使用ENVI与Arcgis计算出这三种指数。 </p>
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp归一化植被指数(NDVI),是最常用的植被指数，可较好地反映植被绿度变化，能消除影像内部和外部的噪音，计算公式为： </p>
+      <img src="images/equation1.png" alt="" style="margin:0 auto"/>
+      <p>式中:ρnir为近红外波段反射率; ρred为红光波段反射率。</p>
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp增强型植被指数(EVI) ，蓝光波段修正大气对红光波段的影响,可以提高对高生物量区的敏感度,通过消弱叶冠背景信号和降低大气影响来改善对植被的监测,与 NDVI互为补充，利用计算公式为：</p>
+      <img src="images/equation2.png" alt="" style="margin:0 auto"/>
+      <p>式中：ρnir为近红外波段反射率; ρred为红光波段反射率; ρblue为蓝光波段反射率; L=1，为土壤调节参数;参数 C1和 C2分别为6 和7.5。</p>
+      <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp陆表水分指数( LSWI) 是与植被水分含量有关的植被指数，对处于泡田期的水稻监测有较好效果，计算公式:</p>
+     <img src="images/equation3.png" alt="" style="margin:0 auto"/>
+     <p>式中: ρnir为近红外波段反射率; ρswir为中短波红外波段反射率。(下图从左到右为NDVI,EVI，LSWI)</p>
+     <img class="imgl" src="images/NDVI.png" alt="" width="30%" height="200" />
+     <img class="imgl" src="images/EVI.png" alt="" width="30%" height="200" />
+     <img class="imgl" src="images/LSWI.png" alt="" width="30%" height="200" />
+     <h5 style="font-size:14px"><a name="a6">3.3建立基于水稻典型发育期光谱特征的水稻种植面积和水稻空间分布范围提取模型</a></h5>
+     <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp根据3月中旬到9月中旬的NDVI指数图，其中，至少有8个16天合成的时相NDVI≥0.7，这些像元认为是林地并从影像中剔除，这一部分使用脚本文件，用以提高整体的运行效率。 </p>
+     <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp根据东北地区DEM图，坡度大于15°的地区被认为不可能有水稻生长，从影像中去除。 </p>
+     <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp根据Xiao等的研究，在移栽期若某个像素符合EVI≤LSWI+0.05那么该像素可能为水稻田，而该方法仍存在缺陷,会把湿地或者由于灌溉或降雨而导致的土壤含水量的其他作物也同时包含进来。而通常情况下，在移栽期稻田反射光谱是水，土壤、秧苗以及稻田的背景的混合光谱。在该时期，稻田高土壤含水量和低植被覆盖度可用LSWI与EVI检测出来，若在灌水移栽期EVI值较高，则说明该像素代表地物为其他植被，为非水稻区域。因此，本项目判断若移栽期像素符合LSWI&gt;0.12,EVI&lt;0.26，且(LSWI+0.05)&gt;EVI，则这些像素可能为水稻田；由实验表明，对水稻像元来说，在移栽期之后第3到第5个16天合成的时期(处于水稻生长最旺盛的阶段)，如果图像未受云影响，则这3个时期平均EVI值将大于0.35，所以永久水体和其他非水稻区域可通过这个条件去除。最终输出的结果就是本项目提取的水稻空间分布范围。(下图)</p>
+<img src="images/rice_result.jpg" alt="" width="550" height="400" style="margin:0 auto"/>
+    </div>
+    <div class="column" style="background:#FFF">
+      <div class="subnav">
+        <h2>目录</h2>
+        <ul>
+          <li><a href="#a1">1.研究目的</a></li>
+          <li><a href="#a2">2.研究思路</a></li>
+          <li><a href="#a3">3.研究方法与结果</a>
+            <ul>
+              <li><a href="#a4">3.1数据预处理</a></li>
+              <li><a href="#a5">3.2指数选取与计算</a></li>
+              <li><a href="#a6">3.3建立基于水稻典型发育期光谱特征的水稻种植面积和水稻空间分布范围提取模型</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      
+  </div>
+</div>
+</body>
+</html>
